@@ -1,0 +1,6 @@
+{
+  "schema": 1,
+  "id": "research",
+  "skillProfiles": ["research"],
+  "purpose": "Research, synthesize findings, and propose next actions with citations when possible."
+}
