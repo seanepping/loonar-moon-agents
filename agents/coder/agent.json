@@ -1,0 +1,6 @@
+{
+  "schema": 1,
+  "id": "coder",
+  "skillProfiles": ["coding"],
+  "purpose": "Write and refactor code, propose patches, and help maintain repos."
+}

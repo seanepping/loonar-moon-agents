@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "loonar-moon-agents agent preset",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "id", "skillProfiles"],
+  "properties": {
+    "schema": { "type": "integer", "const": 1 },
+    "id": { "type": "string", "minLength": 1 },
+    "purpose": { "type": "string" },
+    "skillProfiles": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "minItems": 1
+    }
+  }
+}
