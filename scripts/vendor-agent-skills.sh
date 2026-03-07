@@ -70,7 +70,12 @@ fi
 
 git fetch "$REMOTE_NAME" --prune
 
-REMOTE_REF="$REMOTE_NAME/$REF"
+# `git subtree` accepts raw commit SHAs, but `remote/<sha>` is not a valid object name.
+# Validate against the fetched SHA directly when the pin is a detached commit.
+REMOTE_REF="$REF"
+if ! git rev-parse --verify "$REMOTE_REF^{commit}" >/dev/null 2>&1; then
+  REMOTE_REF="$REMOTE_NAME/$REF"
+fi
 
 # Contract validation: ensure the referenced tree looks like loonar-moon-agent-skills.
 # Validate only the contract (manifest+profiles+skills), not implementation details.
