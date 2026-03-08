@@ -50,6 +50,13 @@ fi
 need() { command -v "$1" >/dev/null 2>&1 || { echo "$1 not found" >&2; exit 1; }; }
 need git
 
+# `git subtree` creates a commit in the target repo, so give non-interactive runs a
+# deterministic local identity instead of depending on root/global git config.
+export GIT_AUTHOR_NAME=${GIT_AUTHOR_NAME:-"OpenClaw"}
+export GIT_AUTHOR_EMAIL=${GIT_AUTHOR_EMAIL:-"openclaw@local"}
+export GIT_COMMITTER_NAME=${GIT_COMMITTER_NAME:-"$GIT_AUTHOR_NAME"}
+export GIT_COMMITTER_EMAIL=${GIT_COMMITTER_EMAIL:-"$GIT_AUTHOR_EMAIL"}
+
 ROOT=$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)
 cd "$ROOT"
 
